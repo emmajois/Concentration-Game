@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		FC6BD0792AD62F6D00CD9475 /* Concentration_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0782AD62F6D00CD9475 /* Concentration_GameApp.swift */; };
-		FC6BD07B2AD62F6D00CD9475 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD07A2AD62F6D00CD9475 /* ContentView.swift */; };
+		FC6BD07B2AD62F6D00CD9475 /* ConcentrationGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD07A2AD62F6D00CD9475 /* ConcentrationGameView.swift */; };
 		FC6BD07D2AD62F7000CD9475 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD07C2AD62F7000CD9475 /* Assets.xcassets */; };
 		FC6BD0802AD62F7000CD9475 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6BD07F2AD62F7000CD9475 /* Preview Assets.xcassets */; };
 		FC6BD08A2AD62F7100CD9475 /* Concentration_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0892AD62F7100CD9475 /* Concentration_GameTests.swift */; };
 		FC6BD0942AD62F7100CD9475 /* Concentration_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0932AD62F7100CD9475 /* Concentration_GameUITests.swift */; };
 		FC6BD0962AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0952AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift */; };
+		FC6BD0A62AD6341800CD9475 /* ConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0A52AD6341800CD9475 /* ConcentrationGame.swift */; };
+		FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		FC6BD0752AD62F6D00CD9475 /* Concentration Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Concentration Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6BD0782AD62F6D00CD9475 /* Concentration_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration_GameApp.swift; sourceTree = "<group>"; };
-		FC6BD07A2AD62F6D00CD9475 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FC6BD07A2AD62F6D00CD9475 /* ConcentrationGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGameView.swift; sourceTree = "<group>"; };
 		FC6BD07C2AD62F7000CD9475 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC6BD07F2AD62F7000CD9475 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC6BD0852AD62F7100CD9475 /* Concentration GameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Concentration GameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,8 @@
 		FC6BD08F2AD62F7100CD9475 /* Concentration GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Concentration GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6BD0932AD62F7100CD9475 /* Concentration_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration_GameUITests.swift; sourceTree = "<group>"; };
 		FC6BD0952AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FC6BD0A52AD6341800CD9475 /* ConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGame.swift; sourceTree = "<group>"; };
+		FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiConcentrationGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +98,9 @@
 		FC6BD0772AD62F6D00CD9475 /* Concentration Game */ = {
 			isa = PBXGroup;
 			children = (
-				FC6BD0782AD62F6D00CD9475 /* Concentration_GameApp.swift */,
-				FC6BD07A2AD62F6D00CD9475 /* ContentView.swift */,
+				FC6BD0A32AD633B500CD9475 /* Model */,
+				FC6BD0A22AD6339400CD9475 /* View */,
+				FC6BD0A42AD633DF00CD9475 /* ViewModel */,
 				FC6BD07C2AD62F7000CD9475 /* Assets.xcassets */,
 				FC6BD07E2AD62F7000CD9475 /* Preview Content */,
 			);
@@ -125,6 +130,31 @@
 				FC6BD0952AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift */,
 			);
 			path = "Concentration GameUITests";
+			sourceTree = "<group>";
+		};
+		FC6BD0A22AD6339400CD9475 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BD0782AD62F6D00CD9475 /* Concentration_GameApp.swift */,
+				FC6BD07A2AD62F6D00CD9475 /* ConcentrationGameView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FC6BD0A32AD633B500CD9475 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BD0A52AD6341800CD9475 /* ConcentrationGame.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FC6BD0A42AD633DF00CD9475 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6BD07B2AD62F6D00CD9475 /* ContentView.swift in Sources */,
+				FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */,
+				FC6BD0A62AD6341800CD9475 /* ConcentrationGame.swift in Sources */,
+				FC6BD07B2AD62F6D00CD9475 /* ConcentrationGameView.swift in Sources */,
 				FC6BD0792AD62F6D00CD9475 /* Concentration_GameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
