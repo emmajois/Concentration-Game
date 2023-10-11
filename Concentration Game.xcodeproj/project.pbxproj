@@ -16,7 +16,7 @@
 		FC6BD0962AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0952AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift */; };
 		FC6BD0A62AD6341800CD9475 /* ConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0A52AD6341800CD9475 /* ConcentrationGame.swift */; };
 		FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */; };
-		FC6BD0AB2AD641B800CD9475 /* Array+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0AA2AD641B800CD9475 /* Array+Index.swift */; };
+		FC6BD0AB2AD641B800CD9475 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0AA2AD641B800CD9475 /* Array+Identifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,7 @@
 		FC6BD0952AD62F7100CD9475 /* Concentration_GameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration_GameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FC6BD0A52AD6341800CD9475 /* ConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGame.swift; sourceTree = "<group>"; };
 		FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiConcentrationGame.swift; sourceTree = "<group>"; };
-		FC6BD0AA2AD641B800CD9475 /* Array+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Index.swift"; sourceTree = "<group>"; };
+		FC6BD0AA2AD641B800CD9475 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,7 @@
 		FC6BD0A92AD6419000CD9475 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				FC6BD0AA2AD641B800CD9475 /* Array+Index.swift */,
+				FC6BD0AA2AD641B800CD9475 /* Array+Identifiable.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */,
-				FC6BD0AB2AD641B800CD9475 /* Array+Index.swift in Sources */,
+				FC6BD0AB2AD641B800CD9475 /* Array+Identifiable.swift in Sources */,
 				FC6BD0A62AD6341800CD9475 /* ConcentrationGame.swift in Sources */,
 				FC6BD07B2AD62F6D00CD9475 /* ConcentrationGameView.swift in Sources */,
 				FC6BD0792AD62F6D00CD9475 /* Concentration_GameApp.swift in Sources */,

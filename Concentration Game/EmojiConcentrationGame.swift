@@ -12,7 +12,7 @@ import SwiftUI
 
 @Observable class EmojiConcentrationGame {
     //MARK: - Properties
-    static let emojis = ["🌸","🦑","😎","🦅", "🪼","🐙","🐉","🔥","🧝🏻‍♀️"]
+    static let emojis = ["🌸","😎","🦅","🐉","🔥","🧝🏻‍♀️"]
     
     private var game = createGame()
     

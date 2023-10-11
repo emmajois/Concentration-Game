@@ -12,38 +12,41 @@ struct ConcentrationGameView: View {
     let emojiGame: EmojiConcentrationGame
     
     var body: some View {
-        HStack{
-            ForEach(emojiGame.cards){ card in
-                CardView(card: card, font: fontForGameSize())
-                    .onTapGesture {
-                        emojiGame.choose(card)
-                    }
+        GeometryReader { geometry in
+            LazyVGrid(columns: columns(for: geometry.size)){
+                ForEach(emojiGame.cards){ card in
+                    CardView(card: card)
+                        .onTapGesture {
+                            emojiGame.choose(card)
+                        }
+                }
             }
+            .padding()
         }
-        .padding()
     }
-    
-    private func fontForGameSize() -> Font {
-        emojiGame.cards.count < 10 ? .largeTitle : .body
+    private func columns(for size: CGSize) -> [GridItem]{
+        Array(repeating: GridItem(.flexible()), count: Int(size.width / 125))
     }
 }
 
 struct CardView: View {
     let card: ConcentrationGame<String>.Card
-    let font: Font
+
     
     var body: some View{
-        ZStack{
-            if card.isFaceUp{
-                RoundedRectangle(cornerRadius: Card.cornerRadius).fill(.white)
-                RoundedRectangle(cornerRadius: Card.cornerRadius).stroke()
-                Text(card.content)
-                    .font(font)
-            } else{
-                RoundedRectangle(cornerRadius: Card.cornerRadius)
+        GeometryReader { geometry in
+            ZStack{
+                if card.isFaceUp{
+                    RoundedRectangle(cornerRadius: Card.cornerRadius).fill(.white)
+                    RoundedRectangle(cornerRadius: Card.cornerRadius).stroke()
+                    Text(card.content)
+                        .font(systemFont(for: geometry.size))
+                } else{
+                    RoundedRectangle(cornerRadius: Card.cornerRadius)
+                }
             }
+            .foregroundStyle(.blue)
         }
-        .foregroundStyle(.blue)
         .aspectRatio(Card.aspectRatio, contentMode: .fit)
     }
     
@@ -51,6 +54,11 @@ struct CardView: View {
     private struct Card {
         static let aspectRatio: Double = 2/3
         static let cornerRadius = 10.0
+        static let fontScaleFactor = 0.75
+    }
+    
+    private func systemFont(for size: CGSize) -> Font {
+        .system(size: min(size.width, size.height) * Card.fontScaleFactor)
     }
 }
 
