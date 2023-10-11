@@ -18,6 +18,7 @@
 		FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */; };
 		FC6BD0AB2AD641B800CD9475 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0AA2AD641B800CD9475 /* Array+Identifiable.swift */; };
 		FC6BD0AD2AD64CFF00CD9475 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0AC2AD64CFF00CD9475 /* Pie.swift */; };
+		FC6BD0AF2AD650E000CD9475 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6BD0AE2AD650E000CD9475 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		FC6BD0A72AD635B700CD9475 /* EmojiConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiConcentrationGame.swift; sourceTree = "<group>"; };
 		FC6BD0AA2AD641B800CD9475 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		FC6BD0AC2AD64CFF00CD9475 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		FC6BD0AE2AD650E000CD9475 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				FC6BD0782AD62F6D00CD9475 /* Concentration_GameApp.swift */,
 				FC6BD07A2AD62F6D00CD9475 /* ConcentrationGameView.swift */,
 				FC6BD0AC2AD64CFF00CD9475 /* Pie.swift */,
+				FC6BD0AE2AD650E000CD9475 /* CardView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6BD0AF2AD650E000CD9475 /* CardView.swift in Sources */,
 				FC6BD0AD2AD64CFF00CD9475 /* Pie.swift in Sources */,
 				FC6BD0A82AD635B700CD9475 /* EmojiConcentrationGame.swift in Sources */,
 				FC6BD0AB2AD641B800CD9475 /* Array+Identifiable.swift in Sources */,

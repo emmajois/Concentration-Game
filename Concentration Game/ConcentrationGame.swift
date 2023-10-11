@@ -11,6 +11,12 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     var cards: Array<Card>
     var indexOfTheOneAndOnlyFaceUpCard: Int?
     
+    var score: Int {
+        cards.reduce(0) { $0 + $1.score }
+//        cards.reduce(0) {total, card in
+//            total + card.score}
+    }
+    
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = []
         
@@ -40,6 +46,7 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
                 }
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
+            cards[chosenIndex].viewCount += 1
             cards[chosenIndex].isFaceUp.toggle()
         }
     }
@@ -47,7 +54,20 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     struct Card: Identifiable {
         var isFaceUp = false
         var isMatched = false
+        var viewCount = 0
         var content: CardContent
         var id: Int
+        
+        var score: Int {
+            if isMatched {
+                return 3 - viewCount
+            }
+            
+            if viewCount > 0 {
+                return -viewCount + 1
+            }
+            
+            return 0
+        }
     }
 }
