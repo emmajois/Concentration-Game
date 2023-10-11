@@ -14,28 +14,43 @@ struct ConcentrationGameView: View {
     var body: some View {
         HStack{
             ForEach(emojiGame.cards){ card in
-                CardView(card: card)
+                CardView(card: card, font: fontForGameSize())
+                    .onTapGesture {
+                        emojiGame.choose(card)
+                    }
             }
         }
         .padding()
+    }
+    
+    private func fontForGameSize() -> Font {
+        emojiGame.cards.count < 10 ? .largeTitle : .body
     }
 }
 
 struct CardView: View {
     let card: ConcentrationGame<String>.Card
+    let font: Font
     
     var body: some View{
         ZStack{
             if card.isFaceUp{
-                RoundedRectangle(cornerRadius: 10).fill(.white)
-                RoundedRectangle(cornerRadius: 10).stroke()
+                RoundedRectangle(cornerRadius: Card.cornerRadius).fill(.white)
+                RoundedRectangle(cornerRadius: Card.cornerRadius).stroke()
                 Text(card.content)
-                    .font(.largeTitle)
+                    .font(font)
             } else{
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: Card.cornerRadius)
             }
         }
         .foregroundStyle(.blue)
+        .aspectRatio(Card.aspectRatio, contentMode: .fit)
+    }
+    
+    //MARK: - Drawing constants
+    private struct Card {
+        static let aspectRatio: Double = 2/3
+        static let cornerRadius = 10.0
     }
 }
 

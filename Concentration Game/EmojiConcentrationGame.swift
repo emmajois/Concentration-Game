@@ -12,17 +12,20 @@ import SwiftUI
 
 @Observable class EmojiConcentrationGame {
     //MARK: - Properties
-    private var game =  ConcentrationGame<String>(numberOfPairsOfCards: 2) { index in
-        index > 0 ? "🌸" : "🦑"
-    }
+    static let emojis = ["🌸","🦑","😎","🦅", "🪼","🐙","🐉","🔥","🧝🏻‍♀️"]
     
+    private var game = createGame()
+    
+    static func createGame() -> ConcentrationGame<String>{
+        ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...emojis.count)) { emojis[$0] }
+    }
     //MARK: - Model Access
     var cards: Array<ConcentrationGame<String>.Card> {
         game.cards
     }
     
     //MARK: - User Intents
-    func choose(card: ConcentrationGame<String>.Card) {
+    func choose(_ card: ConcentrationGame<String>.Card) {
         game.choose(card:card)
     }
 }
