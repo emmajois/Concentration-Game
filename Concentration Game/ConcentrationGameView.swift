@@ -39,6 +39,9 @@ struct CardView: View {
                 if card.isFaceUp{
                     RoundedRectangle(cornerRadius: Card.cornerRadius).fill(.white)
                     RoundedRectangle(cornerRadius: Card.cornerRadius).stroke()
+                    Pie(startAngle: Angle(degrees: 360-90), endAngle: Angle(degrees: 105-90))
+                        .opacity(0.4)
+                        .padding()
                     Text(card.content)
                         .font(systemFont(for: geometry.size))
                 } else{
