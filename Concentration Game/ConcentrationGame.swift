@@ -23,8 +23,8 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = cardContentFactory(pairIndex)
             
-            cards.append(Card(content: content, id: pairIndex * 2))
-            cards.append(Card(content: content, id: pairIndex * 2 + 1))
+            cards.append(Card(content: content))
+            cards.append(Card(content: content))
         }
         
         cards.shuffle()
@@ -52,15 +52,42 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
     }
     
     struct Card: Identifiable {
-        var isFaceUp = false
-        var isMatched = false
-        var viewCount = 0
-        var content: CardContent
-        var id: Int
+ 
+        //MARK: - Properties
+        fileprivate(set) var isFaceUp = false {
+            didSet {
+                if isFaceUp {
+                    startUsingBonuseTime()
+                } else {
+                    stopUsingBonusTime()
+                }
+            }
+        }
+        fileprivate(set) var isMatched = false {
+            didSet {
+                stopUsingBonusTime()
+            }
+        }
+        fileprivate(set) var viewCount = 0
+        fileprivate(set) var content: CardContent
+        fileprivate(set) var id = UUID()
+        
+        var bonusTimeLimit: TimeInterval = Score.maxBonusTime
+        var lastFaceUpTime: Date?
+        var pastFaceUpTime: TimeInterval = 0
+        
+        //MARK: - Computed Properties
+        var bonusTimeRemaining: TimeInterval {
+            max(0, bonusTimeLimit - faceUpTime)
+        }
+        
+        var isConsumingBonusTime: Bool {
+            isFaceUp && !isMatched && bonusTimeRemaining > 0
+        }
         
         var score: Int {
             if isMatched {
-                return 3 - viewCount
+                return Score.baseMatchValue - viewCount + bonusScore
             }
             
             if viewCount > 0 {
@@ -69,5 +96,42 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
             
             return 0
         }
+        
+        //MARK: - Private Helpers
+        private var bonusRemainingPercent: Double {
+            (bonusTimeLimit > 0 && bonusTimeRemaining > 0)
+            ? bonusTimeRemaining / bonusTimeLimit
+            : 0
+        }
+        
+        private var bonusScore: Int {
+            Int(bonusRemainingPercent * Score.bonusFactor)
+        }
+        
+        private var faceUpTime: TimeInterval {
+            if let lastFaceUpTime {
+                pastFaceUpTime + Date().timeIntervalSince(lastFaceUpTime)
+            } else {
+                pastFaceUpTime
+            }
+        }
+        
+        private mutating func startUsingBonuseTime () {
+            if isConsumingBonusTime && lastFaceUpTime == nil {
+                lastFaceUpTime = Date()
+            }
+        }
+        
+        private mutating func stopUsingBonusTime() {
+            pastFaceUpTime = faceUpTime
+            lastFaceUpTime = nil
+        }
     }
+}
+
+//MARK: - Constants
+private struct Score {
+    static let baseMatchValue = 3
+    static let bonusFactor = 5.0
+    static let maxBonusTime = 12.0
 }

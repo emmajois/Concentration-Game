@@ -44,6 +44,6 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(card: ConcentrationGame<String>.Card(isFaceUp:true, content: "🐙", id: 13))
+    CardView(card: ConcentrationGame<String>.Card(isFaceUp:true, content: "🐙"))
         .padding(50)
 }
