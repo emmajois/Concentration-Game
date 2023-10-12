@@ -15,13 +15,14 @@ import SwiftUI
     static let emojis = ["🌸","😎","🦅","🐉","🔥","🧝🏻‍♀️"]
     
     private var game = createGame()
+    private var isVisible = false
     
     static func createGame() -> ConcentrationGame<String>{
         ConcentrationGame<String>(numberOfPairsOfCards: Int.random(in: 2...emojis.count)) { emojis[$0] }
     }
     //MARK: - Model Access
-    var cards: Array<ConcentrationGame<String>.Card> {
-        game.cards
+    var dealtCards: Array<ConcentrationGame<String>.Card> {
+        isVisible ? game.cards : []
     }
     
     var score: Int {
@@ -30,10 +31,27 @@ import SwiftUI
     
     //MARK: - User Intents
     func choose(_ card: ConcentrationGame<String>.Card) {
-        game.choose(card:card)
+        withAnimation(.easeIn(duration: Constants.animationDuration)){
+            game.choose(card:card)
+        }
+    }
+    
+    func dealCards() {
+        withAnimation(.easeInOut(duration: Constants.animationDuration)){
+            isVisible = true
+        }
     }
     
     func newGame() {
-        game = EmojiConcentrationGame.createGame()
+        withAnimation(.easeInOut(duration: Constants.animationDuration)){
+            isVisible = false
+            game = EmojiConcentrationGame.createGame()
+        }
+        dealCards()
+    }
+    
+    //MARK: - Constants
+    private struct Constants {
+        static let animationDuration = 0.5
     }
 }
