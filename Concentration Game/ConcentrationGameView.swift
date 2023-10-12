@@ -18,7 +18,9 @@ struct ConcentrationGameView: View {
                     ForEach(emojiGame.cards){ card in
                         CardView(card: card)
                             .onTapGesture {
-                                emojiGame.choose(card)
+                                withAnimation {
+                                    emojiGame.choose(card)
+                                }
                             }
                     }
                 }

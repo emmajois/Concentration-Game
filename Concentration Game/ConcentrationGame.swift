@@ -72,11 +72,17 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         fileprivate(set) var content: CardContent
         fileprivate(set) var id = UUID()
         
-        var bonusTimeLimit: TimeInterval = Score.maxBonusTime
-        var lastFaceUpTime: Date?
-        var pastFaceUpTime: TimeInterval = 0
+        fileprivate(set) var bonusTimeLimit: TimeInterval = Score.maxBonusTime
+        fileprivate(set) var lastFaceUpTime: Date?
+        fileprivate(set) var pastFaceUpTime: TimeInterval = 0
         
         //MARK: - Computed Properties
+        var bonusRemainingPercent: Double {
+            (bonusTimeLimit > 0 && bonusTimeRemaining > 0)
+            ? bonusTimeRemaining / bonusTimeLimit
+            : 0
+        }
+        
         var bonusTimeRemaining: TimeInterval {
             max(0, bonusTimeLimit - faceUpTime)
         }
@@ -98,12 +104,6 @@ struct ConcentrationGame<CardContent> where CardContent: Equatable {
         }
         
         //MARK: - Private Helpers
-        private var bonusRemainingPercent: Double {
-            (bonusTimeLimit > 0 && bonusTimeRemaining > 0)
-            ? bonusTimeRemaining / bonusTimeLimit
-            : 0
-        }
-        
         private var bonusScore: Int {
             Int(bonusRemainingPercent * Score.bonusFactor)
         }
